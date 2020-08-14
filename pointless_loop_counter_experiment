@@ -1,0 +1,36 @@
+import time
+
+# Check loops completed in ten seconds using a function call.
+def ten_seconds_have_not_passed_since(start_time):
+    '''Checks that ten seconds still haven't passed yet.'''
+    return time.time() - start_time < 10
+
+start_time = time.time()
+loops = 0
+
+while ten_seconds_have_not_passed_since(start_time):
+    loops += 1
+    continue
+
+# Print results after ten seconds.
+print("\nUsing a function:")
+print(f"{loops:,} loops completed in {round(time.time() - start_time, 2)} seconds.")
+
+
+# Check loops completed in ten seconds without a function call.
+start_time2 = time.time()
+loops2 = 0
+
+while True:
+    if time.time() - start_time2 < 10:
+        loops2 += 1
+        continue
+    else: break
+
+# Print results after ten seconds.
+print("\nNot using a function:")
+print(f"{loops2:,} loops completed in {round(time.time() - start_time2, 2)} seconds.")
+
+#Conclusion...
+print(f"\nUsing a function call cost {(loops2 - loops):,} loops.")
+
